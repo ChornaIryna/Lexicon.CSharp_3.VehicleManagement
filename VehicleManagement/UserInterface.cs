@@ -1,4 +1,5 @@
-﻿using VehicleManagement.Core.Enums;
+﻿using VehicleManagement.Core.Data;
+using VehicleManagement.Core.Enums;
 using VehicleManagement.Core.Errors;
 using VehicleManagement.Core.Models;
 using VehicleManagement.Handlers;
@@ -34,7 +35,7 @@ internal class UserInterface
             { "1", CreateAndListVehicles },
             { "2", UpdateVehicleWeight },
             { "3", ShowErrors },
-            { "4", ListVehicles }
+            { "4", ListPredefinedVehicles }
         };
 
         if (menuActions.TryGetValue(choice ?? string.Empty, out var action))
@@ -69,6 +70,33 @@ internal class UserInterface
         ListVehicles();
     }
 
+    private static void ShowErrors()
+    {
+        var errors = new List<SystemError>
+        {
+            new EngineFailureError(),
+            new BrakeFailureError(),
+            new TransmissionError()
+        };
+
+        ConsoleHelper.PrintMessage("\nError Messages:");
+        foreach (var error in errors)
+        {
+            ConsoleHelper.PrintMessage(error.ErrorMessage());
+        }
+    }
+
+    private void ListPredefinedVehicles()
+    {
+        var predefinedVehicles = PredefinedVehicleData.GetVehicles();
+       
+        foreach (var vehicle in predefinedVehicles)
+        {
+            _vehicleHandler.CreateVehicle(vehicle);
+        }
+        ListVehicles();
+    }
+
     private void ListVehicles()
     {
         ConsoleHelper.PrintMessage(_vehicleHandler.ListVehicles());
@@ -93,30 +121,14 @@ internal class UserInterface
 
         return _vehicleHandler.CreateVehicle(brand, model, year, weight, vehicleType, additionalInfo);
     }
-
-    private static void ShowErrors()
-    {
-        var errors = new List<SystemError>
-        {
-            new EngineFailureError(),
-            new BrakeFailureError(),
-            new TransmissionError()
-        };
-
-        ConsoleHelper.PrintMessage("\nError Messages:");
-        foreach (var error in errors)
-        {
-            ConsoleHelper.PrintMessage(error.ErrorMessage());
-        }
-    }
-
+    
     private void ShowMenu()
     {
         ConsoleHelper.PrintMessage("Welcome to the Vehicle Management System!");
         ConsoleHelper.PrintMessage("1. Create Vehicle");
         ConsoleHelper.PrintMessage("2. Update Vehicle Weight");
         ConsoleHelper.PrintMessage("3. Show Error Messages");
-        ConsoleHelper.PrintMessage("4. List Vehicles");
+        ConsoleHelper.PrintMessage("4. List Vehicles"); //List created and predefined vehicles
         ConsoleHelper.PrintMessage("0. Exit");
     }
 }
