@@ -5,7 +5,7 @@ internal static class ExceptionHelper
     public static void HandleException(Exception ex)
     {
         Console.WriteLine($"Error: {ex.Message}");
-        // Optionally log the exception to a file or monitoring system
+        
     }
 
     public static void ThrowIfNull<T>(T? obj, string paramName) where T : class
