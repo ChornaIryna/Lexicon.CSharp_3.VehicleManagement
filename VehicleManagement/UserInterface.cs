@@ -35,7 +35,7 @@ internal class UserInterface
             { "1", CreateAndListVehicles },
             { "2", UpdateVehicleWeight },
             { "3", ShowErrors },
-            { "4", ListPredefinedVehicles }
+            { "4", AddPredefinedVehicles }
         };
 
         if (menuActions.TryGetValue(choice ?? string.Empty, out var action))
@@ -45,8 +45,8 @@ internal class UserInterface
                 action();
             }
             catch (Exception ex)
-            {
-                ExceptionHelper.HandleException(ex);
+            {                
+                ConsoleHelper.HandleException(ex);
             }
         }
         else
@@ -64,6 +64,12 @@ internal class UserInterface
 
     private void UpdateVehicleWeight()
     {
+        if (_vehicleHandler.IsVehicleListEmpty())
+        {
+            ConsoleHelper.PrintMessage("No vehicles available to update.");
+            return;
+        }
+
         int index = ConsoleHelper.GetIntInput("Enter vehicle index to update weight: ");
         double weight = ConsoleHelper.GetDoubleInput("Enter new weight: ");
         _vehicleHandler.UpdateVehicleWeight(index, weight);
@@ -79,14 +85,14 @@ internal class UserInterface
             new TransmissionError()
         };
 
-        ConsoleHelper.PrintMessage("\nError Messages:");
+        ConsoleHelper.PrintMessage($"{Environment.NewLine}Error Messages:");
         foreach (var error in errors)
         {
             ConsoleHelper.PrintMessage(error.ErrorMessage());
         }
     }
 
-    private void ListPredefinedVehicles()
+    private void AddPredefinedVehicles()
     {
         var predefinedVehicles = PredefinedVehicleData.GetVehicles();
        
@@ -124,11 +130,11 @@ internal class UserInterface
     
     private void ShowMenu()
     {
-        ConsoleHelper.PrintMessage("Welcome to the Vehicle Management System!");
+        ConsoleHelper.PrintMessage($"{Environment.NewLine}Welcome to the Vehicle Management System!");
         ConsoleHelper.PrintMessage("1. Create Vehicle");
         ConsoleHelper.PrintMessage("2. Update Vehicle Weight");
         ConsoleHelper.PrintMessage("3. Show Error Messages");
-        ConsoleHelper.PrintMessage("4. List Vehicles"); //List created and predefined vehicles
+        ConsoleHelper.PrintMessage("4. Add and List Predefined Vehicles"); // Add predefined vehicles to the list
         ConsoleHelper.PrintMessage("0. Exit");
     }
 }
