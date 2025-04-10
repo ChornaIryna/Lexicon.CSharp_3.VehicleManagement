@@ -10,18 +10,12 @@ public class VehicleHandler
 
     public void CreateVehicle( Vehicle vehicle)
     {
-        try
+        if (vehicle is null)
         {
-            if (vehicle is null)
-            {
-                throw new ArgumentException(nameof(vehicle), "Vehicle cannot be null.");
-            }
-            vehicles.Add(vehicle);
+            throw new ArgumentException("Vehicle cannot be null.");
         }
-        catch (ArgumentException ex)
-        {
-            throw new ArgumentException($"Error creating vehicle: {ex.Message}");
-        }
+        vehicles.Add(vehicle);
+
     }
     public Vehicle CreateVehicle(string brand, string model, int year, double weight, VehicleType vehicleType, object additionalInfo)
     {
@@ -71,5 +65,10 @@ public class VehicleHandler
             }
         }
         return vehicleList.ToString();
+    }
+
+    public bool IsVehicleListEmpty()
+    {
+        return vehicles.Count == 0;
     }
 }

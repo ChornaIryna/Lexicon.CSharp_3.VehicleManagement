@@ -26,4 +26,11 @@ internal static class ConsoleHelper
     {
         Console.WriteLine(message);
     }
+    
+    public static void HandleException(Exception ex)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"Error: {ex.Message}");
+        Console.ResetColor();
+    }
 }
