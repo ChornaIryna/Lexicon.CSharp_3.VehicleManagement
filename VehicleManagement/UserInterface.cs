@@ -128,7 +128,7 @@ internal class UserInterface
         return _vehicleHandler.CreateVehicle(brand, model, year, weight, vehicleType, additionalInfo);
     }
     
-    private void ShowMenu()
+    private static void ShowMenu()
     {
         ConsoleHelper.PrintMessage($"{Environment.NewLine}Welcome to the Vehicle Management System!");
         ConsoleHelper.PrintMessage("1. Create Vehicle");

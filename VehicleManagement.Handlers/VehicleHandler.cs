@@ -6,7 +6,7 @@ using VehicleManagement.Core.Models;
 namespace VehicleManagement.Handlers;
 public class VehicleHandler
 {
-    private readonly List<Vehicle> vehicles = new();
+    private readonly List<Vehicle> _vehicles = new();
 
     public void CreateVehicle( Vehicle vehicle)
     {
@@ -14,7 +14,7 @@ public class VehicleHandler
         {
             throw new ArgumentException("Vehicle cannot be null.");
         }
-        vehicles.Add(vehicle);
+        _vehicles.Add(vehicle);
 
     }
     public Vehicle CreateVehicle(string brand, string model, int year, double weight, VehicleType vehicleType, object additionalInfo)
@@ -33,7 +33,7 @@ public class VehicleHandler
     {
         try
         {
-            vehicles[index].Weight = newWeight;
+            _vehicles[index].Weight = newWeight;
         }
         catch (ArgumentOutOfRangeException ex)
         {
@@ -47,14 +47,14 @@ public class VehicleHandler
 
     public string ListVehicles()
     {
-        if (vehicles.Count == 0)
+        if (_vehicles.Count == 0)
         {
-            return "No vehicles to list.";
+            return "No _vehicles to list.";
         }
 
         StringBuilder vehicleList = new StringBuilder();
 
-        foreach (var vehicle in vehicles)
+        foreach (var vehicle in _vehicles)
         {
             vehicleList.AppendLine();
             vehicleList.AppendLine($"{vehicle.Stats()}");
@@ -69,6 +69,6 @@ public class VehicleHandler
 
     public bool IsVehicleListEmpty()
     {
-        return vehicles.Count == 0;
+        return _vehicles.Count == 0;
     }
 }
