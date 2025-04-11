@@ -41,7 +41,7 @@ public class VehicleHandler
         }
         catch (ArgumentException ex)
         {
-            throw new ArgumentException($"Error updating weight: {ex.Message}");
+            throw new ArgumentException($"Invalid weight: {ex.Message}");
         }
     }
 

@@ -11,7 +11,8 @@ internal static class ConsoleHelper
     public static int GetIntInput(string prompt)
     {
         Console.Write(prompt);
-        int.TryParse(Console.ReadLine(), out int result);
+        if(!int.TryParse(Console.ReadLine(), out int result)) 
+            throw new ArgumentException("Invalid number");
         return result;
     }
 

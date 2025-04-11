@@ -4,7 +4,18 @@ namespace VehicleManagement.Core.Models;
 
 public class Truck : Vehicle, ICleanable
 {
-    public double CargoCapacity { get; set; }
+    private double cargoCapacity;
+    public double CargoCapacity
+    {
+        get => cargoCapacity;
+        set
+        {
+            if (value <= 0)
+                throw new ArgumentException("Cargo capacity must be a positive value.");
+            cargoCapacity = value;
+        }
+    }
+
     public Truck(string brand, string model, int year, double weight, double cargoCapacity) 
         : base(brand, model, year, weight)
     {

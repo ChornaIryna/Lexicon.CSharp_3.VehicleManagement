@@ -4,7 +4,19 @@ namespace VehicleManagement.Core.Models;
 
 public class Car : Vehicle, ICleanable
 {
-    public int SeatingCapacity { get; set; }
+    private int seatingCapacity;
+    
+    public int SeatingCapacity
+    {
+        get => seatingCapacity;
+        set
+        {
+            if (value <= 0)
+                throw new ArgumentException("Seating capacity must be a positive value.");
+            seatingCapacity = value;
+        }
+    }
+
     public Car(string brand, string model, int year, double weight, int seatingCapacity) 
         : base(brand, model, year, weight)
     {
