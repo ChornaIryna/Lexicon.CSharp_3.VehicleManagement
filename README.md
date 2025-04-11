@@ -126,6 +126,8 @@ The following vehicles are used as test data:
 - `Motorcycle`: Brand: "Harley-Davidson", Model: "Street 750", Year: 2021, Weight: 220, HasSidecar: false
 - `ElectricScooter`: Brand: "Xiaomi", Model: "M365", Year: 2022, Weight: 12, BatteryRange: 30
 
-### 
-**Answers to Questions:** The answers to the questions are included as comments in the `Program.cs`.    
+---
+
+### Answers to Questions
+The answers to the questions are included as comments in the `Program.cs`.  Â  
 
