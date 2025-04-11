@@ -46,7 +46,7 @@ internal class UserInterface
             }
             catch (Exception ex)
             {                
-                ConsoleHelper.HandleException(ex);
+                ConsoleHelper.PrintErrorMessage(ex);
             }
         }
         else

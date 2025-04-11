@@ -9,7 +9,7 @@ public static class PredefinedVehicleData
         return new List<Vehicle>
         {
             new Car("Toyota", "Camry", 2022, 1500, 5),
-            new Truck("Ford", "F-150", 2021, 2500, 2.5),
+            new Truck("Ford", "F-150", 2021, 2500, 2500),
             new Motorcycle("Honda", "CBR500R", 2023, 200, false),
             new ElectricScooter("Xiaomi", "Mi Pro", 2024, 15, 45)
         };
