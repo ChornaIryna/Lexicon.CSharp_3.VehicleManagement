@@ -16,6 +16,6 @@ public class Motorcycle : Vehicle
 
     public override string Stats()
     {
-        return $"Motorcycle: {Brand} {Model}, Year: {Year}, Weight: {Weight}kg, {(HasSidecar ? "With sidecar" : "Without sidecar")} ";
+        return $"Motorcycle: {base.Stats()}, {(HasSidecar ? "With sidecar" : "Without sidecar")} ";
     }
 }

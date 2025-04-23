@@ -5,7 +5,7 @@ namespace VehicleManagement.Core.Models;
 public class Car : Vehicle, ICleanable
 {
     private int seatingCapacity;
-    
+
     public int SeatingCapacity
     {
         get => seatingCapacity;
@@ -17,7 +17,7 @@ public class Car : Vehicle, ICleanable
         }
     }
 
-    public Car(string brand, string model, int year, double weight, int seatingCapacity) 
+    public Car(string brand, string model, int year, double weight, int seatingCapacity)
         : base(brand, model, year, weight)
     {
         SeatingCapacity = seatingCapacity;
@@ -29,7 +29,7 @@ public class Car : Vehicle, ICleanable
 
     public override string Stats()
     {
-        return $"Car: {Brand} {Model}, Year: {Year}, Weight: {Weight}kg, Seating Capacity: {SeatingCapacity}";
+        return $"Car: {base.Stats()}, Seating Capacity: {SeatingCapacity}";
     }
 
     public string Clean()

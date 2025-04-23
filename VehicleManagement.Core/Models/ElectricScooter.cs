@@ -14,7 +14,7 @@ public class ElectricScooter : Vehicle
         }
     }
 
-    public ElectricScooter(string brand, string model, int year, double weight, int batteryRange) 
+    public ElectricScooter(string brand, string model, int year, double weight, int batteryRange)
         : base(brand, model, year, weight)
     {
         BatteryRange = batteryRange;
@@ -27,6 +27,6 @@ public class ElectricScooter : Vehicle
 
     public override string Stats()
     {
-        return $"Electric Scooter: {Brand} {Model}, Year: {Year}, Weight: {Weight}kg, Battery Range: {BatteryRange}km";
+        return $"Electric Scooter: {base.Stats()}, Battery Range: {BatteryRange}km";
     }
 }

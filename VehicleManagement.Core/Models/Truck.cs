@@ -16,7 +16,7 @@ public class Truck : Vehicle, ICleanable
         }
     }
 
-    public Truck(string brand, string model, int year, double weight, double cargoCapacity) 
+    public Truck(string brand, string model, int year, double weight, double cargoCapacity)
         : base(brand, model, year, weight)
     {
         CargoCapacity = cargoCapacity;
@@ -27,7 +27,7 @@ public class Truck : Vehicle, ICleanable
     }
     public override string Stats()
     {
-        return $"Truck: {Brand} {Model}, Year: {Year}, Weight: {Weight}kg, Cargo Capacity: {CargoCapacity}kg";
+        return $"Truck: {base.Stats()}, Cargo Capacity: {CargoCapacity}kg";
     }
     public string Clean()
     {

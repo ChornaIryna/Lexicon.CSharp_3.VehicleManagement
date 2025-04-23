@@ -7,13 +7,14 @@ public abstract class Vehicle
     private int year;
     private double weight;
 
-    public string Brand { 
+    public string Brand
+    {
         get => brand;
-        set 
+        set
         {
             if (value.Length < 2 || value.Length > 20)
             {
-                throw new ArgumentException("Brand must be between 2 and 20 characters."); 
+                throw new ArgumentException("Brand must be between 2 and 20 characters.");
             }
             brand = value;
         }
@@ -61,5 +62,8 @@ public abstract class Vehicle
     }
 
     public abstract string StartEngine();
-    public abstract string Stats();
+    public virtual string Stats()
+    {
+        return $"{Brand} {Model}, Year: {Year}, Weight: {Weight}kg";
+    }
 }
